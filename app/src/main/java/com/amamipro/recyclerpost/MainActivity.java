@@ -23,7 +23,7 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     private static String urlpost = "http://jsonplaceholder.typicode.com/posts";
-    private List<PostModel> listPost = new ArrayList<PostModel>();
+    private List<PostModel> listPostm = new ArrayList<PostModel>();
 
     private RecyclerView lView;
     PostAdapter adapter;
@@ -40,19 +40,15 @@ public class MainActivity extends AppCompatActivity {
 
         ambildata();
         lView = (RecyclerView) findViewById(R.id.recycler_post);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         lView.setLayoutManager(layoutManager);
-        adapter = new PostAdapter(this,listPost);
+        adapter = new PostAdapter(this, listPostm,getApplicationContext());
         lView.setAdapter(adapter);
 
     }
 
     private void ambildata(){
-//        Request request = new Request().Builder()
-//                .url(urlpost)
-//                .cacheControl(new CacheControl.Builder().noCache().build())
-//                .build();
         Request request = new Request.Builder()
                 .url(urlpost)
                 .cacheControl(new CacheControl.Builder().noCache().build())
@@ -67,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if(!response.isSuccessful()){
-                    throw new IOException("(gak respon jsonnya)Unexpected Code " + response);
+                    throw new IOException("(salah jsonnya)Unexpected Code " + response);
                 } else {
                     final String hasil = response.body().string();
                     runOnUiThread(new Runnable() {
@@ -88,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < jsonarray.length(); i++) {
                 PostModel post = new PostModel();
                 JSONObject jsonobject = jsonarray.getJSONObject(i);
-                String userId = jsonobject.getString("userID");
+                String userId = jsonobject.getString("userId");
                 String id = jsonobject.getString("id");
                 String title = jsonobject.getString("title");
                 String body = jsonobject.getString("body");
@@ -96,11 +92,12 @@ public class MainActivity extends AppCompatActivity {
                 post.setId(id);
                 post.setTitle(title);
                 post.setBody(body);
+                listPostm.add(post);
 
             }
             adapter.notifyDataSetChanged();
         } catch (Throwable t) {
-            Log.e("My App", "Jseon orr: \"" + strjson + "\"");
+            Log.e("My App ar", "Jseon orr: \"" + t + "\"");
         }
         }
 

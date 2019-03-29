@@ -2,6 +2,7 @@ package com.amamipro.recyclerpost;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,25 +16,35 @@ import java.util.List;
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     private List<PostModel> listPost;
     private Activity activity;
+    private Context context;
 
-    public PostAdapter(Activity activity, List<PostModel> listPost) {
+    public PostAdapter(Activity activity, List<PostModel> listPost, Context context) {
         this.listPost = listPost;
         this.activity = activity;
+        this.context = context;
     }
+
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_listpost,viewGroup,false);
         ViewHolder vh = new ViewHolder(v);
-        return null;
+        return vh;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.judul.setText(listPost.get(i).getTitle());
         viewHolder.isi.setText(listPost.get(i).getBody());
-        //button
+        viewHolder.tombolkomen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, CommentActivity.class)
+                        .putExtra("postId", listPost.get(i).getId());
+                activity.startActivity(intent);
+            }
+        });
     }
 
     @Override

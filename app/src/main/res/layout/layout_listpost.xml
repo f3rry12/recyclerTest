@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
     android:background="@android:color/white"
     android:padding="12dp"
     android:id="@+id/layout_post"
+    android:layout_marginBottom="6dp"
+    android:layout_marginTop="6dp"
     >
 
     <TextView
@@ -38,8 +40,7 @@
         android:layout_below="@+id/jumlah_komen"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#000"
-        android:layout_marginBottom="3dp"
+        android:background="@android:color/darker_gray"
         android:layout_margin="4dp"
         />
     <Button
@@ -47,8 +48,16 @@
         android:layout_below="@id/garis2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/comment_button"
+        android:background="@drawable/button_comment"
         android:gravity="center"
         android:textAlignment="center"
         android:text="See Comment"/>
+    <!--<View-->
+        <!--android:id="@+id/garis3"-->
+        <!--android:layout_below="@+id/see_comment"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="@android:color/darker_gray"-->
+        <!--android:layout_margin="4dp"-->
+        <!--/>-->
 </RelativeLayout>
