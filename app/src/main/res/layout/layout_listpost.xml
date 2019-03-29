@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="12dp"
+    android:id="@+id/layout_post"
+    >
+
+    <TextView
+        android:id="@+id/post_judul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="6dp"
+        />
+    <TextView
+        android:id="@+id/post_body"
+        android:layout_below="@id/post_judul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="12dp"
+        />
+    <TextView
+        android:id="@+id/jumlah_komen"
+        android:layout_below="@id/post_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="5 Comments"
+        />
+    <View
+        android:id="@+id/garis2"
+        android:layout_below="@+id/jumlah_komen"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000"
+        android:layout_marginBottom="3dp"
+        android:layout_margin="4dp"
+        />
+    <Button
+        android:id="@+id/see_comment"
+        android:layout_below="@id/garis2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/comment_button"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:text="See Comment"/>
+</RelativeLayout>
